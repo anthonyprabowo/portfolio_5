@@ -11,13 +11,16 @@ window.addEventListener('load', function() {
 // creating sort filter (my version)
 
 function searchResults() {
+    let images = document.querySelector('.picture');
     let input = document.getElementById('search');
-    let filter = input.value;
+    let filter = input.value.toLowerCase();
 
-    for(let i = 1; i <= 12; i++) {
-        let dataCaption = document.querySelector(".picture").data-caption;
-        if(!dataCaption.include(filter)) {
-            document.getElementById(`picture-${i}`).style.display = "none";
+    for(let i = 1; i <= images.length; i++) {
+        let dataCaption = images[i].getAtribute('data-caption')
+        if(!dataCaption.includes(filter)) {
+            images[i].style.display = 'none';
+        } else {
+            images[i].style.display = '';
         }
     }
 }
